@@ -7,8 +7,9 @@ const PORT = process.env.PORT || 5000;
 
 const onServerStarted = () => { logger.info(`Server started on ${PORT}`) };
 
-
 app.use(express.json());
-app.use(process.env.API_VERSION , require('./app/routes/user'));
+
+app.use(process.env.API_VERSION , require('./app/modules/customer/customer.route'));
+app.use(process.env.API_VERSION , require('./app/modules/order/order.route'));
 
 app.listen(PORT, onServerStarted());
